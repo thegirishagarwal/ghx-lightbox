@@ -1,0 +1,13 @@
+<div class="ghx-lightbox-nav-button">
+  <ng-container *ngIf="gls.openedIndex > 0">
+    <a href="javascript:;" class="lightbox-prev" (click)="goToPrev()">
+      <span class="icon-angle-double-left"></span>
+    </a>
+  </ng-container>
+
+  <ng-container *ngIf="gls.openedIndex < (gls.allItems.length - 1)">
+    <a href="javascript:;" class="lightbox-next" (click)="goToNext()">
+      <span class="icon-angle-double-right"></span>
+    </a>
+  </ng-container>
+</div>

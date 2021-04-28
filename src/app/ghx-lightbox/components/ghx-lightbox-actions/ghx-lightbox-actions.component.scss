@@ -1,0 +1,29 @@
+.lightbox-actions-list {
+  ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    li {
+      a {
+        background-color: #000;
+        color: white;
+        padding: 5px;
+        width: 35px;
+        height: 35px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-size: 24px;
+        box-sizing: border-box;
+        span {
+          display: inline-block;
+          line-height: 0;
+        }
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
