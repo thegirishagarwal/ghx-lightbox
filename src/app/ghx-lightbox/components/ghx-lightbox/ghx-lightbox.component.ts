@@ -20,14 +20,17 @@ import { GhxLightboxService } from '../../services';
 })
 export class GhxLightboxComponent implements OnInit, AfterContentInit {
 
-  @Input() src: string;
-  @Input() caption: string;
+  @Input() src: string = '';
+  @Input() caption: string = '';
   @Input() captionPosition: 'top' | 'bottom' = 'bottom';
   @Input() showPrevNextButton: boolean = false;
 
-  @ViewChild('lightCaption', {static: true}) lightCaption: ElementRef;
-  @ViewChild('lightBoxFigure', {static: true}) lightBoxFigure: ElementRef;
-  @ViewChild('lightboxImage', {static: true}) lightboxImage: ElementRef;
+  @ViewChild('lightCaption', { static: true })
+    lightCaption!: ElementRef<HTMLElement>;
+  @ViewChild('lightBoxFigure', {static: true})
+    lightBoxFigure!: ElementRef<HTMLElement>;
+  @ViewChild('lightboxImage', {static: true})
+    lightboxImage!: ElementRef<HTMLElement>;
 
   constructor(
     public viewContainerRef: ViewContainerRef,
@@ -50,7 +53,6 @@ export class GhxLightboxComponent implements OnInit, AfterContentInit {
   closeLightBox() {
     this.glService.destroy();
   }
-
 
   setImageHeight() {
     const totalHeight = window.innerHeight - 100;

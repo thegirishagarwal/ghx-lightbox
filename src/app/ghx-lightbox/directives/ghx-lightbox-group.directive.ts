@@ -17,7 +17,7 @@ export class GhxLightboxGroupDirective implements AfterContentChecked, OnInit {
     private injector: Injector,
     private _appRef: ApplicationRef
   ) {
-    this._elemRef.nativeElement.classList.add('ghx-lightbox-group')
+    this._elemRef.nativeElement.classList.add('ghx-lightbox-group');
   }
 
   ngOnInit() {
@@ -39,6 +39,11 @@ export class GhxLightboxGroupDirective implements AfterContentChecked, OnInit {
     })
   }
 
+  @HostBinding('class.ghx-lightbox-group')
+  get bindClass() {
+    return true;
+  }
+
   ngAfterContentChecked() {
 
   }
@@ -55,7 +60,8 @@ export class GhxLightboxGroupDirective implements AfterContentChecked, OnInit {
     this.glService._setupComponentInstance(source);
     this.glService.componentRef.instance.showPrevNextButton = true;
 
-    document.querySelector('body').classList.add('ghx-lightbox-opened');
+    const bodyElemet = <HTMLBodyElement>document.querySelector('body');
+    bodyElemet.classList.add('ghx-lightbox-opened');
   }
 
 }

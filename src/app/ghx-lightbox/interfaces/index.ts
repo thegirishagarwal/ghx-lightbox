@@ -15,6 +15,6 @@ export interface LightBoxConfig {
 
 
 export interface ItemType {
-  src: string;
-  caption?: string;
+  src: string | null;
+  caption?: string | null;
 }

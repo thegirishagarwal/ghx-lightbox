@@ -1,14 +1,4 @@
-import {
-  ApplicationRef,
-  ComponentFactoryResolver,
-  Directive,
-  ElementRef,
-  EmbeddedViewRef,
-  Injector,
-  Input,
-  OnInit,
-  Renderer2
-} from '@angular/core';
+import { AfterContentChecked, ApplicationRef, ComponentFactoryResolver, Directive, ElementRef, EmbeddedViewRef, HostBinding, Injector, Input, OnInit, Renderer2 } from '@angular/core';
 import { GhxLightboxComponent } from '../components';
 import { ItemType } from '../interfaces';
 import { GhxLightboxService } from '../services';
@@ -18,8 +8,8 @@ import { GhxLightboxService } from '../services';
 })
 export class GhxLightboxDirective implements OnInit {
 
-  @Input() src: string;
-  @Input() alt: string;
+  @Input() src: string = '';
+  @Input() alt: string = '';
 
   constructor(
     private _elemRef: ElementRef<HTMLImageElement>,
@@ -32,6 +22,10 @@ export class GhxLightboxDirective implements OnInit {
     this._elemRef.nativeElement.classList.add('ghx-lightbox-item')
   }
 
+  @HostBinding('class.ghx-lightbox-item')
+  get bindClass() {
+    return true;
+  }
 
   ngOnInit() {
     this.render2.setStyle(this._elemRef.nativeElement, 'cursor', 'pointer');
@@ -62,7 +56,8 @@ export class GhxLightboxDirective implements OnInit {
 
     this.glService._setupComponentInstance(source);
 
-    document.querySelector('body').classList.add('ghx-lightbox-opened');
+    const bodyElemet = <HTMLBodyElement>document.querySelector('body');
+    bodyElemet.classList.add('ghx-lightbox-opened');
   }
 
 }
