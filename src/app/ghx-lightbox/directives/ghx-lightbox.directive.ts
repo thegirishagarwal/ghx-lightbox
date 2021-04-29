@@ -1,4 +1,14 @@
-import { AfterContentChecked, ApplicationRef, ComponentFactoryResolver, Directive, ElementRef, EmbeddedViewRef, HostBinding, Injector, Input, OnInit, Renderer2 } from '@angular/core';
+import {
+  ApplicationRef,
+  ComponentFactoryResolver,
+  Directive,
+  ElementRef,
+  EmbeddedViewRef,
+  Injector,
+  Input,
+  OnInit,
+  Renderer2
+} from '@angular/core';
 import { GhxLightboxComponent } from '../components';
 import { ItemType } from '../interfaces';
 import { GhxLightboxService } from '../services';
@@ -18,17 +28,15 @@ export class GhxLightboxDirective implements OnInit {
     private cfr: ComponentFactoryResolver,
     private _appRef: ApplicationRef,
     private injector: Injector
-  ) { }
-
-  @HostBinding('class.ghx-lightbox-item')
-  get bindClass() {
-    return true;
+  ) {
+    this._elemRef.nativeElement.classList.add('ghx-lightbox-item')
   }
+
 
   ngOnInit() {
     this.render2.setStyle(this._elemRef.nativeElement, 'cursor', 'pointer');
     this._elemRef.nativeElement.addEventListener('click', () => {
-      if (this._elemRef.nativeElement.closest('[ghxLightboxGroup]') === null) {
+      if (this._elemRef.nativeElement.closest('.ghx-lightbox-group') === null) {
         const source = [
           {
             src: this.src,

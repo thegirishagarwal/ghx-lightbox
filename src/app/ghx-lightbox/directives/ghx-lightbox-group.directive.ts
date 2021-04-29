@@ -17,12 +17,12 @@ export class GhxLightboxGroupDirective implements AfterContentChecked, OnInit {
     private injector: Injector,
     private _appRef: ApplicationRef
   ) {
-
+    this._elemRef.nativeElement.classList.add('ghx-lightbox-group')
   }
 
   ngOnInit() {
     this.glService.allItems = [];
-    const ghxItems = this._elemRef.nativeElement.querySelectorAll('[ghxLightbox]');
+    const ghxItems = this._elemRef.nativeElement.querySelectorAll('.ghx-lightbox-item');
     ghxItems.forEach((lightBox, key) => {
       this.glService.allItems.push(
         {
@@ -37,11 +37,6 @@ export class GhxLightboxGroupDirective implements AfterContentChecked, OnInit {
         return;
       })
     })
-  }
-
-  @HostBinding('class.ghx-lightbox-group')
-  get bindClass() {
-    return true;
   }
 
   ngAfterContentChecked() {

@@ -22,7 +22,7 @@ export class GhxLightboxComponent implements OnInit, AfterContentInit {
 
   @Input() src: string;
   @Input() caption: string;
-  @Input() captionPosition: 'top' | 'bottom' = 'top';
+  @Input() captionPosition: 'top' | 'bottom' = 'bottom';
   @Input() showPrevNextButton: boolean = false;
 
   private captionHeight: string;
