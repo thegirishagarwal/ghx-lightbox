@@ -2,9 +2,11 @@
   <div class="lightbox-overlay" (click)="closeLightBox()"></div>
   <div class="lightbox-container">
     <div class="inner-container">
-      <div class="lightbox-caption {{captionPosition}}" #lightCaption>
-        <h3>{{caption}}</h3>
-      </div>
+      <ng-container *ngIf="caption">
+        <div class="lightbox-caption {{captionPosition}}" #lightCaption>
+          <h3>{{caption}}</h3>
+        </div>
+      </ng-container>
       <figure #lightBoxFigure>
         <img [src]="src" [alt]="caption" #lightboxImage>
       </figure>

@@ -25,8 +25,6 @@ export class GhxLightboxComponent implements OnInit, AfterContentInit {
   @Input() captionPosition: 'top' | 'bottom' = 'bottom';
   @Input() showPrevNextButton: boolean = false;
 
-  private captionHeight: string;
-
   @ViewChild('lightCaption', {static: true}) lightCaption: ElementRef;
   @ViewChild('lightBoxFigure', {static: true}) lightBoxFigure: ElementRef;
   @ViewChild('lightboxImage', {static: true}) lightboxImage: ElementRef;
@@ -46,7 +44,6 @@ export class GhxLightboxComponent implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit() {
-    this.getCaptionHeight();
     this.setImageHeight();
   }
 
@@ -54,11 +51,6 @@ export class GhxLightboxComponent implements OnInit, AfterContentInit {
     this.glService.destroy();
   }
 
-  getCaptionHeight() {
-    setTimeout(() => {
-      this.captionHeight = this.lightCaption.nativeElement.clientHeight;
-    }, 10)
-  }
 
   setImageHeight() {
     const totalHeight = window.innerHeight - 100;

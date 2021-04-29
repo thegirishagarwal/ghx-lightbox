@@ -1,27 +1,75 @@
-# GhxLightbox
+# Ghx LightBox
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.29.
+This is an Angular wrapper library for the [Ghx LightBox](https://thegirishagarwal.github.io/ghx-lightbox/). To use this library you should get familiar with the Ghx LightBox documentation as well since this documentation only explains details specific to this wrapper.
 
-## Development server
+This documentation is for the latest 5/6.x.x version which requires Angular 5 or newer. For Angular 4 you need to use the latest 4.x.x version. Documentation for the 1.x.x can be found from <a href="https://github.com/thegirishagarwal/ghx-lightbox/">here</a>.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+### Quick links
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+[Example application](https://thegirishagarwal.github.io/ghx-lightbox/)
+ |
+[StackBlitz example](https://stackblitz.com/github/thegirishagarwal/ghx-lightbox/tree/master)
+ |
+[Ghx LightBox documentation](https://github.com/thegirishagarwal/ghx-lightbox/)
 
-## Build
+### Installing and usage
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```bash
+npm install ghx-lightbox --save
+```
 
-## Running unit tests
+##### Load the module for your app (with global configuration):
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Providing the global configuration is optional and when used you should only provide the configuration in your root module.
 
-## Running end-to-end tests
+```javascript
+import { GhxLightboxModule } from 'ghx-lightbox';
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+@NgModule({
+  ...
+  imports: [
+    ...
+    GhxLightboxModule
+  ],
+})
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+##### Use it in your HTML template (with custom configuration):
+
+This library provides two ways to create a Ghx LightBox for your project, a component. Component tries to make the usage as simple as possible.
+
+**Single Lightbox usage**
+
+##### Ex. 1
+```html
+<img src="<Imgage Path>" alt="<Lightbox Caption>" ghxLightbox>
+```
+
+##### Ex. 2
+```html
+<span src="<Imgage Path>" alt="<Lightbox Caption>" ghxLightbox>Lorem ipsum...</span>
+```
+
+
+**Multiple Lightbox usage**
+
+##### Ex. 1
+```html
+<div ghxLightboxGroup>
+  <img src="<Imgage Path>" alt="<Lightbox Caption>" ghxLightbox>
+</div>
+```
+##### Ex. 2
+```html
+<div ghxLightboxGroup>
+  <span src="<Imgage Path>" alt="<Lightbox Caption>" ghxLightbox>Lorem ipsum...</span>
+</div>
+```
+
+##### Ex. 2
+```html
+<span src="<Imgage Path>" alt="<Lightbox Caption>" ghxLightbox>Lorem ipsum...<span>
+```
+For more detailed documentation with all the supported events / options see the the Ghx LightBox documentation.
