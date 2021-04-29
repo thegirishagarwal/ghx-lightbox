@@ -1,18 +1,25 @@
-import { AfterContentChecked, ApplicationRef, ComponentFactoryResolver, Directive, ElementRef, EmbeddedViewRef, HostBinding, Injector, OnInit, Renderer2 } from '@angular/core';
+import {
+  ApplicationRef,
+  ComponentFactoryResolver,
+  Directive,
+  ElementRef,
+  EmbeddedViewRef,
+  HostBinding,
+  Injector,
+  OnInit,
+  Renderer2
+} from '@angular/core';
 import { GhxLightboxComponent } from '../components';
 import { GhxLightboxService } from '../services';
 
 @Directive({
   selector: '[ghxLightboxGroup]'
 })
-export class GhxLightboxGroupDirective implements AfterContentChecked, OnInit {
-
-  // elementRef: ElementRef;
+export class GhxLightboxGroupDirective implements OnInit {
 
   constructor(
     private _elemRef: ElementRef<HTMLElement>,
     private glService: GhxLightboxService,
-    private render2: Renderer2,
     private cfr: ComponentFactoryResolver,
     private injector: Injector,
     private _appRef: ApplicationRef
@@ -42,10 +49,6 @@ export class GhxLightboxGroupDirective implements AfterContentChecked, OnInit {
   @HostBinding('class.ghx-lightbox-group')
   get bindClass() {
     return true;
-  }
-
-  ngAfterContentChecked() {
-
   }
 
   initLightBox(source: any, index = 0, isLightBox = true) {

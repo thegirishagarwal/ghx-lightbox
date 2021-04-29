@@ -2,7 +2,7 @@
 
 This is an Angular wrapper library for the [Ghx LightBox](https://thegirishagarwal.github.io/ghx-lightbox/). To use this library you should get familiar with the Ghx LightBox documentation as well since this documentation only explains details specific to this wrapper.
 
-This documentation is for the latest 5/6.x.x version which requires Angular 5 or newer. For Angular 4 you need to use the latest 4.x.x version. Documentation for the 1.x.x can be found from <a href="https://github.com/thegirishagarwal/ghx-lightbox/">here</a>.
+This documentation is for Angular 8 or newer. Documentation can be found from [here](https://thegirishagarwal.github.io/ghx-lightbox/).
 
 
 ### Quick links
@@ -68,8 +68,4 @@ This library provides two ways to create a Ghx LightBox for your project, a comp
 </div>
 ```
 
-##### Ex. 2
-```html
-<span src="<Imgage Path>" alt="<Lightbox Caption>" ghxLightbox>Lorem ipsum...<span>
-```
 For more detailed documentation with all the supported events / options see the the Ghx LightBox documentation.

@@ -1,4 +1,15 @@
-import { AfterContentChecked, ApplicationRef, ComponentFactoryResolver, Directive, ElementRef, EmbeddedViewRef, HostBinding, Injector, Input, OnInit, Renderer2 } from '@angular/core';
+import {
+  ApplicationRef,
+  ComponentFactoryResolver,
+  Directive,
+  ElementRef,
+  EmbeddedViewRef,
+  HostBinding,
+  Injector,
+  Input,
+  OnInit,
+  Renderer2
+} from '@angular/core';
 import { GhxLightboxComponent } from '../components';
 import { ItemType } from '../interfaces';
 import { GhxLightboxService } from '../services';
@@ -12,7 +23,7 @@ export class GhxLightboxDirective implements OnInit {
   @Input() alt: string = '';
 
   constructor(
-    private _elemRef: ElementRef<HTMLImageElement>,
+    private _elemRef: ElementRef<HTMLElement>,
     private glService: GhxLightboxService,
     private render2: Renderer2,
     private cfr: ComponentFactoryResolver,
