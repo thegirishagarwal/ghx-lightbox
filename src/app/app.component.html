@@ -33,21 +33,11 @@
   <h4>Example 2</h4>
   <div class="demo-gallery d-flex flex-wrap">
       <ul>
-        <li src="../assets/img/picure-1.jpeg" alt="Caption 1" ghxLightbox>
-          <span>Picture 1</span>
-        </li>
-        <li src="../assets/img/picure-2.jpeg" alt="Caption 2" ghxLightbox>
-          <span>Picture 2</span>
-        </li>
-        <li src="../assets/img/picure-3.jpeg" alt="Caption 3" ghxLightbox>
-          <span>Picture 3</span>
-        </li>
-        <li src="../assets/img/picure-4.jpeg" alt="Caption 4" ghxLightbox>
-          <span>Picture 4</span>
-        </li>
-        <li src="../assets/img/picure-5.jpeg" alt="Caption 5" ghxLightbox>
-          <span>Picture 5</span>
-        </li>
+        <ng-container *ngFor="let item of items">
+          <li ghxLightbox [src]="item.src" [alt]="item.caption">
+            <span>{{item.caption}}</span>
+          </li>
+        </ng-container>
       </ul>
   </div>
 
@@ -86,22 +76,12 @@
   <br>
   <h4>Example 2</h4>
   <div class="demo-gallery d-flex flex-wrap" ghxLightboxGroup>
-      <ul>
-        <li src="../assets/img/picure-1.jpeg" alt="Caption 1" ghxLightbox>
-          <span>Picture 1</span>
+    <ul>
+      <ng-container *ngFor="let item of items">
+        <li ghxLightbox [src]="item.src" [alt]="item.caption">
+          <span>{{item.caption}}</span>
         </li>
-        <li src="../assets/img/picure-2.jpeg" alt="Caption 2" ghxLightbox>
-          <span>Picture 2</span>
-        </li>
-        <li src="../assets/img/picure-3.jpeg" alt="Caption 3" ghxLightbox>
-          <span>Picture 3</span>
-        </li>
-        <li src="../assets/img/picure-4.jpeg" alt="Caption 4" ghxLightbox>
-          <span>Picture 4</span>
-        </li>
-        <li src="../assets/img/picure-5.jpeg" alt="Caption 5" ghxLightbox>
-          <span>Picture 5</span>
-        </li>
-      </ul>
+      </ng-container>
+    </ul>
   </div>
 </div>

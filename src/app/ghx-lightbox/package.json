@@ -1,0 +1,21 @@
+{
+  "name": "ghx-lightbox",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^8.2.14",
+    "@angular/core": "^8.2.14"
+  },
+  "main": "bundles/ghx-lightbox.umd.js",
+  "module": "fesm5/ghx-lightbox.js",
+  "es2015": "fesm2015/ghx-lightbox.js",
+  "esm5": "esm5/ghx-lightbox.js",
+  "esm2015": "esm2015/ghx-lightbox.js",
+  "fesm5": "fesm5/ghx-lightbox.js",
+  "fesm2015": "fesm2015/ghx-lightbox.js",
+  "typings": "ghx-lightbox.d.ts",
+  "metadata": "ghx-lightbox.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}

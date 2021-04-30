@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GhxLightboxModule } from './ghx-lightbox/ghx-lightbox.module';
+import { GhxLightboxModule } from './ghx-lightbox';
 
 @NgModule({
   declarations: [
