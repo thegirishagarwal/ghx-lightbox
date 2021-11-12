@@ -1,0 +1,22 @@
+<div class="lightbox-overlay" (click)="closeLightBox()"></div>
+<div class="ghx-lightbox">
+  <div class="lightbox-container">
+    <div class="inner-container">
+      <ng-container *ngIf="configs.showCaption">
+        <div class="lightbox-caption {{captionPosition}}">
+          <h3>{{caption}}</h3>
+        </div>
+      </ng-container>
+      <figure #lightBoxFigure>
+        <img [src]="src" [alt]="caption" #lightboxImage>
+      </figure>
+    </div>
+  </div>
+
+  <ng-container *ngIf="showPrevNextButton">
+    <ghx-lightbox-nav></ghx-lightbox-nav>
+  </ng-container>
+  <div class="lightbox-actions">
+    <ghx-lightbox-actions [config]="configs"></ghx-lightbox-actions>
+  </div>
+</div>

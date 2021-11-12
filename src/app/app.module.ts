@@ -3,8 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GhxLightboxModule } from 'ghx-lightbox';
+import { GhxLightboxModule } from './demo-gallery/ghx-lightbox.module';
 import { CommonModule } from '@angular/common';
+import { GHX_LIGHTBOX_CONFIG, LightBoxConfigInterface } from './demo-gallery/interfaces';
+
+const GHXConfig: LightBoxConfigInterface = {
+  showCaption: true
+}
 
 @NgModule({
   declarations: [
@@ -16,7 +21,12 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     GhxLightboxModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: GHX_LIGHTBOX_CONFIG,
+      useValue: GHXConfig
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
