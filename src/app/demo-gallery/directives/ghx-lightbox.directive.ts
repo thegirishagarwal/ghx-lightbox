@@ -13,6 +13,7 @@ import {
   Optional,
   Renderer2
 } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
 import { GhxLightboxComponent } from '../ghx-lightbox.component';
 import { GhxLightboxConfig, GHX_LIGHTBOX_CONFIG, ItemType, LightBoxConfigInterface } from '../interfaces';
 import { GhxLightboxService } from '../services';
@@ -35,8 +36,9 @@ export class GhxLightboxDirective implements OnInit {
     private injector: Injector,
     @Optional() @Inject(GHX_LIGHTBOX_CONFIG) private defaults: LightBoxConfigInterface
   ) {
+    this.customElements();
     this.elemRef.nativeElement.classList.add('ghx-lightbox-item');
-    this.glService.defaultConfig = new GhxLightboxConfig(this.defaults);
+    this.glService.defaultConfig = this.defaults;
   }
 
 
@@ -66,20 +68,23 @@ export class GhxLightboxDirective implements OnInit {
 
 
   initLightBox(source: ItemType[]) {
+    const component = document.createElement('ghx-lightbox');
 
-
-    const cf = this.cfr.resolveComponentFactory(GhxLightboxComponent);
-    const component = cf.create(this.injector);
-    this.appRef.attachView(component.hostView);
-
-    const domElem = (component.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
-    document.body.appendChild(domElem);
     this.glService.componentRef = component;
-
     this.glService._setupComponentInstance(source);
 
+    document.body.appendChild(component);
     const bodyElemet = document.querySelector('body') as HTMLBodyElement;
     bodyElemet.classList.add('ghx-lightbox-opened');
+  }
+
+  customElements() {
+    if (customElements.get('ghx-lightbox') === undefined) {
+      const appGeneralComp = createCustomElement(GhxLightboxComponent, {
+        injector: this.injector,
+      });
+      customElements.define('ghx-lightbox', appGeneralComp);
+    }
   }
 
 }

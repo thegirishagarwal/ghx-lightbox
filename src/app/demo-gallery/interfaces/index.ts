@@ -14,6 +14,8 @@ export interface LightBoxConfigInterface {
 
   showZoom?: boolean;
   showFullScreen?: boolean;
+
+  showDownload?: boolean;
 }
 
 
@@ -26,11 +28,13 @@ export interface ItemType {
 export class GhxLightboxConfig implements LightBoxConfigInterface {
   actionPosition?: ActionPositionType = 'top right';
 
-  showCaption?: boolean = true;
+  showCaption = true;
   captionPosition?: CaptionPositionType = 'bottom';
 
-  showZoom?: boolean = false;
-  showFullScreen?: boolean = false;
+  showZoom = false;
+  showFullScreen = false;
+
+  showDownload = false;
 
   constructor(config: LightBoxConfigInterface = {}) {
     this.assign(config);

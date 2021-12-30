@@ -27,7 +27,7 @@ export class GhxLightboxComponent implements OnInit, AfterContentInit {
   @Input() captionPosition: CaptionPositionType = 'bottom';
   @Input() showPrevNextButton = false;
 
-  public configs: LightBoxConfigInterface;
+  public configs: LightBoxConfigInterface = {};
 
   @ViewChild('lightboxImage', {static: true})
     lightboxImage!: ElementRef<HTMLElement>;
@@ -45,7 +45,7 @@ export class GhxLightboxComponent implements OnInit, AfterContentInit {
   }
 
   ngOnInit(): void {
-    console.error(this.configs);
+    this.configs = this.glService.defaultConfig;
   }
 
   ngAfterContentInit() {
@@ -61,5 +61,39 @@ export class GhxLightboxComponent implements OnInit, AfterContentInit {
     this.render2.setStyle(this.lightboxImage.nativeElement, 'max-height', `${totalHeight}px`);
   }
 
+
+  downloadResource() {
+
+    fetch(this.src, {
+        headers: new Headers({
+          Origin: location.origin
+        }),
+        mode: 'cors'
+      })
+      .then(response => response.blob())
+      .then(blob => {
+        const blobUrl = window.URL.createObjectURL(blob);
+        this.forceDownload(blobUrl);
+      })
+      .catch(e => console.error(e));
+  }
+
+  forceDownload(blob) {
+    const a = document.createElement('a');
+    a.download = this.caption || '';
+    a.href = blob;
+    // For Firefox https://stackoverflow.com/a/32226068
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }
+
+  onDownlad(event) {
+    if (!event) {
+      return;
+    }
+
+    this.downloadResource();
+  }
 
 }

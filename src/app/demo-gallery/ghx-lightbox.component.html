@@ -17,6 +17,6 @@
     <ghx-lightbox-nav></ghx-lightbox-nav>
   </ng-container>
   <div class="lightbox-actions">
-    <ghx-lightbox-actions [config]="configs"></ghx-lightbox-actions>
+    <ghx-lightbox-actions [config]="configs" (downloadClick)="onDownlad($event)"></ghx-lightbox-actions>
   </div>
 </div>

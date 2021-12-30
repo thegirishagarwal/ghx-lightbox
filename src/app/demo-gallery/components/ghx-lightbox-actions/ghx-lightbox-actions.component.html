@@ -1,15 +1,24 @@
 <div class="lightbox-actions-list">
   <ul>
-    <li>
-      <a href="javascript:;" (click)="onCloseLightBox()">
-        <span class="lightbox-zoom-in"></span>
-      </a>
-    </li>
-    <li>
-      <a href="javascript:;" (click)="onCloseLightBox()">
-        <span class="lightbox-zoom-out"></span>
-      </a>
-    </li>
+    <ng-container *ngIf="config.showDownload">
+      <li>
+        <a href="javascript:;" (click)="onDownload()">
+          <span class="lightbox-download"></span>
+        </a>
+      </li>
+    </ng-container>
+    <ng-container *ngIf="config.showZoom">
+      <li>
+        <a href="javascript:;" (click)="onCloseLightBox()">
+          <span class="lightbox-zoom-in"></span>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:;" (click)="onCloseLightBox()">
+          <span class="lightbox-zoom-out"></span>
+        </a>
+      </li>
+    </ng-container>
     <li>
       <a href="javascript:;" (click)="onCloseLightBox()">
         <span class="lightbox-close"></span>

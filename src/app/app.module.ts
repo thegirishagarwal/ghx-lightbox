@@ -8,8 +8,9 @@ import { CommonModule } from '@angular/common';
 import { GHX_LIGHTBOX_CONFIG, LightBoxConfigInterface } from './demo-gallery/interfaces';
 
 const GHXConfig: LightBoxConfigInterface = {
-  showCaption: true
-}
+  showCaption: true,
+  showDownload: true
+};
 
 @NgModule({
   declarations: [

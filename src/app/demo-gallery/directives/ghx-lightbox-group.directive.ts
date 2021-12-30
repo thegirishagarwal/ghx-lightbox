@@ -11,6 +11,7 @@ import {
   OnInit,
   QueryList,
 } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
 import { BehaviorSubject } from 'rxjs';
 import { GhxLightboxComponent } from '../ghx-lightbox.component';
 import { ItemType } from '../interfaces';
@@ -73,17 +74,13 @@ export class GhxLightboxGroupDirective implements OnInit, AfterContentInit {
   }
 
   initLightBox() {
-    const cf = this.cfr.resolveComponentFactory(GhxLightboxComponent);
-    const component = cf.create(this.injector);
-    this.appRef.attachView(component.hostView);
+    const component = document.createElement('ghx-lightbox');
 
-    const domElem = (component.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
-    document.body.appendChild(domElem);
     this.glService.componentRef = component;
-
     this.glService._setupComponentInstance(this.allItems$.value);
-    this.glService.componentRef.instance.showPrevNextButton = true;
+    this.glService.componentRef.showPrevNextButton = true;
 
+    document.body.appendChild(component);
     const bodyElemet = document.querySelector('body') as HTMLBodyElement;
     bodyElemet.classList.add('ghx-lightbox-opened');
   }
@@ -92,6 +89,15 @@ export class GhxLightboxGroupDirective implements OnInit, AfterContentInit {
     this.glService.changeIndex$.subscribe(index => {
       this.glService._setupComponentInstance(this.allItems$.value);
     });
+  }
+
+  customElements() {
+    if (customElements.get('ghx-lightbox') === undefined) {
+      const appGeneralComp = createCustomElement(GhxLightboxComponent, {
+        injector: this.injector,
+      });
+      customElements.define('ghx-lightbox', appGeneralComp);
+    }
   }
 
 }

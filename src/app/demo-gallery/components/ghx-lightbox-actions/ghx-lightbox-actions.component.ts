@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { GhxLightboxConfig } from '../../interfaces';
 import { GhxLightboxService } from '../../services';
 
@@ -12,6 +12,8 @@ export class GhxLightboxActionsComponent implements OnInit {
 
   @Input() config: GhxLightboxConfig;
 
+  @Output() downloadClick = new EventEmitter();
+
   constructor(
     private gls: GhxLightboxService
   ) { }
@@ -21,6 +23,10 @@ export class GhxLightboxActionsComponent implements OnInit {
 
   onCloseLightBox() {
     this.gls.destroy();
+  }
+
+  onDownload() {
+    this.downloadClick.emit(true);
   }
 
 }

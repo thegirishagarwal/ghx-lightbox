@@ -3,7 +3,7 @@ import {
   Injectable,
 } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { GhxLightboxConfig, ItemType } from '../interfaces';
+import { GhxLightboxConfig, ItemType, LightBoxConfigInterface } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -16,25 +16,25 @@ export class GhxLightboxService {
 
   public changeIndex$: BehaviorSubject<number> = new BehaviorSubject(0);
 
-  public defaultConfig: GhxLightboxConfig;
+  public defaultConfig: LightBoxConfigInterface;
 
   viewCont: any;
-  componentRef!: ComponentRef<any>;
+  componentRef!: any;
 
   constructor() { }
 
 
   public destroy() {
-    this.componentRef.destroy();
+    this.componentRef.remove();
     const bodyElemet = document.querySelector('body') as HTMLBodyElement;
     bodyElemet.classList.remove('ghx-lightbox-opened');
   }
 
 
   _setupComponentInstance(item: ItemType[]) {
-    this.componentRef.instance.src = item[this.openedIndex].src;
-    this.componentRef.instance.caption = item[this.openedIndex].caption;
-    this.componentRef.instance.configs = this.defaultConfig;
+    this.componentRef.src = item[this.openedIndex].src;
+    this.componentRef.caption = item[this.openedIndex].caption;
+    this.componentRef.configs = this.defaultConfig;
   }
 
 }
